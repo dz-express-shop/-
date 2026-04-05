@@ -13,11 +13,34 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     
+    <!-- GSAP for Advanced Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- ========================================== -->
+    <!-- META PIXEL (FACEBOOK) -->
+    <!-- ========================================== -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '880279101448547'); 
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=880279101448547&ev=PageView&noscript=1"/></noscript>
+
+    <!-- ========================================== -->
     <!-- TIKTOK PIXEL -->
+    <!-- ========================================== -->
     <script>
         !function (w, d, t) {
           w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
-          ttq.load('D691NORC77U6HVGGO320'); // بكسل تيك توك الخاص بك
+          ttq.load('D691NORC77U6HVGGO320'); // بكسل تيك توك
           ttq.page();
         }(window, document, 'ttq');
     </script>
@@ -63,7 +86,7 @@
         html { scroll-behavior: smooth; }
         body { background-color: #080A1A; color: #E2E8F0; overflow-x: hidden; }
         
-        /* Particle Background */
+        /* Particle Background (Optimized - Lighter) */
         .stars-container { position: fixed; width: 100vw; height: 100vh; top: 0; left: 0; z-index: -1; overflow: hidden; pointer-events: none; }
         .star { position: absolute; background: #D4AF37; border-radius: 50%; opacity: 0; animation: twinkle linear infinite; }
         @keyframes twinkle { 0% { opacity: 0; transform: translateY(0) scale(0.5); } 50% { opacity: 0.8; transform: translateY(-50px) scale(1.2); } 100% { opacity: 0; transform: translateY(-100px) scale(0.5); } }
@@ -127,21 +150,10 @@
         #sales-toast {
             position: fixed; top: 20px; left: -400px; z-index: 9999;
             background: rgba(30, 20, 51, 0.95); backdrop-filter: blur(10px); border: 1px solid #D4AF37;
-            border-radius: 12px; padding: 12px 16px; display: flex; items-center; gap: 12px;
+            border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; gap: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: left 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         #sales-toast.show { left: 20px; }
-
-        /* Floating WhatsApp Button */
-        .whatsapp-float {
-            position: fixed; bottom: 85px; right: 20px; z-index: 100;
-            background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center;
-            font-size: 30px; box-shadow: 0px 4px 15px rgba(37, 211, 102, 0.4);
-            width: 60px; height: 60px; display: flex; align-items: center; justify-center;
-            transition: all 0.3s ease;
-        }
-        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0px 6px 20px rgba(37, 211, 102, 0.6); }
-        .wa-ping { position: absolute; width: 100%; height: 100%; background-color: #25d366; border-radius: 50%; z-index: -1; animation: ping-slow 2s infinite; }
     </style>
 </head>
 <body class="antialiased selection:bg-mystic-gold selection:text-mystic-dark relative">
@@ -149,24 +161,16 @@
     <!-- Magic Dust Background -->
     <div class="stars-container" id="stars"></div>
 
-    <!-- Floating WhatsApp -->
-    <a href="https://wa.me/213XXXXXXXXX" target="_blank" class="whatsapp-float flex items-center justify-center">
-        <div class="wa-ping"></div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-        </svg>
-    </a>
-
     <!-- Sales Notification Toast -->
     <div id="sales-toast" class="hidden md:flex">
-        <div class="relative w-10 h-10 rounded-full overflow-hidden border border-mystic-gold shrink-0">
-            <img src="https://i.postimg.cc/hhFKjDFG/203417262.png" alt="Book Cover" class="w-full h-full object-cover">
+        <div class="relative w-10 h-10 rounded-md overflow-hidden border border-mystic-gold shrink-0">
+            <img src="https://images.unsplash.com/photo-1629196914214-991739c3e90d?q=80&w=200&auto=format&fit=crop" alt="Book Cover" class="w-full h-full object-cover">
         </div>
         <div>
             <p class="text-white text-sm font-sans">
                 <span id="toast-name" class="font-bold text-mystic-gold">مريم</span> من <span id="toast-city" class="font-bold">الجزائر</span>
             </p>
-            <p class="text-xs text-gray-400 font-sans mt-1">اشترت <span id="toast-qty" class="text-green-400">نسخة واحدة</span> للتو 📚</p>
+            <p class="text-xs text-gray-400 font-sans mt-1">حصلت على <span id="toast-qty" class="text-green-400">النسخة الإلكترونية</span> للتو 📚</p>
         </div>
     </div>
 
@@ -203,14 +207,22 @@
                     <a href="#order" class="btn-magic w-full sm:w-auto px-10 py-4 rounded-xl font-sans font-bold text-xl flex items-center justify-center gap-3">
                         احصل على نسختك 📚
                     </a>
-                    <p class="text-2xl font-serif text-white">2900 <span class="text-sm text-mystic-gold">د.ج</span></p>
+                    <div class="text-right">
+                        <p class="text-xs text-gray-400 font-sans uppercase">ابتداءً من</p>
+                        <p class="text-2xl font-serif text-white">900 <span class="text-sm text-mystic-gold">د.ج</span></p>
+                    </div>
                 </div>
             </div>
 
             <!-- Authentic Book Image -->
             <div class="order-1 lg:order-2 flex justify-center reveal">
-                <div class="w-64 md:w-[350px] h-auto book-cover animate-float relative z-10">
-                    <img src="https://i.postimg.cc/hhFKjDFG/203417262.png" alt="غلاف رواية انتريستا" class="w-full h-full object-cover rounded-[4px_15px_15px_4px]">
+                <div class="w-64 md:w-80 h-auto book-cover animate-float relative z-10 bg-[#1E1433]">
+                    <img src="https://images.unsplash.com/photo-1629196914214-991739c3e90d?q=80&w=600&auto=format&fit=crop" alt="غلاف رواية انتريستا" class="w-full h-full object-cover rounded-[4px_15px_15px_4px] opacity-80 mix-blend-luminosity">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center border-2 border-mystic-gold/30 rounded-[4px_15px_15px_4px] m-2">
+                        <p class="text-mystic-gold font-serif text-sm tracking-widest mb-4">نجاح سلامة</p>
+                        <h3 class="text-white font-serif text-4xl mb-2 drop-shadow-lg">انتريستا</h3>
+                        <p class="text-gray-300 font-sans text-sm">لعنة الحروب</p>
+                    </div>
                 </div>
                 <!-- Book Glow -->
                 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-96 bg-mystic-gold/20 blur-[70px] -z-10"></div>
@@ -236,7 +248,7 @@
                     </p>
                 </div>
                 <!-- Trope 2 -->
-                <div class="glass-card p-8 reveal" style="transition-delay: 0.2s;">
+                <div class="glass-card p-8 reveal" style="transition-delay: 0.1s;">
                     <div class="w-14 h-14 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center text-2xl mb-6 shadow-[0_0_15px_rgba(239,68,68,0.2)]">⚔️</div>
                     <h3 class="font-serif text-2xl text-white mb-3">لعنة عائلية ومصير</h3>
                     <p class="font-sans text-gray-400 leading-relaxed text-sm">
@@ -244,7 +256,7 @@
                     </p>
                 </div>
                 <!-- Trope 3 -->
-                <div class="glass-card p-8 reveal" style="transition-delay: 0.4s;">
+                <div class="glass-card p-8 reveal" style="transition-delay: 0.2s;">
                     <div class="w-14 h-14 rounded-full bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-2xl mb-6 shadow-[0_0_15px_rgba(236,72,153,0.2)]">❤️‍🔥</div>
                     <h3 class="font-serif text-2xl text-white mb-3">أعداء لعشاق</h3>
                     <p class="font-sans text-gray-400 leading-relaxed text-sm">
@@ -267,75 +279,79 @@
                     <div class="absolute top-[-50px] right-[-50px] w-32 h-32 bg-mystic-gold/20 rounded-full blur-[40px]"></div>
                     
                     <h3 class="font-serif text-3xl text-white mb-2 relative z-10">انتريستا: لعنة الحروب</h3>
-                    <p class="text-mystic-gold/80 font-sans text-sm mb-6 relative z-10">النسخة الورقية الأصلية 📖</p>
+                    <p class="text-mystic-gold/80 font-sans text-sm mb-6 relative z-10">احصل على نسختك الآن</p>
                     
-                    <div class="w-32 mx-auto mb-6 book-cover shadow-2xl relative z-10">
-                        <img src="https://i.postimg.cc/hhFKjDFG/203417262.png" alt="غلاف" class="w-full h-auto rounded-[2px_8px_8px_2px]">
+                    <div class="w-32 mx-auto mb-6 book-cover shadow-2xl relative z-10 bg-[#1E1433]">
+                        <img src="https://images.unsplash.com/photo-1629196914214-991739c3e90d?q=80&w=600&auto=format&fit=crop" alt="غلاف" class="w-full h-auto rounded-[4px_15px_15px_4px] opacity-80 mix-blend-luminosity">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center p-2 text-center border-2 border-mystic-gold/30 rounded-[4px_15px_15px_4px] m-1">
+                            <p class="text-mystic-gold font-serif text-[10px] tracking-widest mb-2">نجاح سلامة</p>
+                            <h3 class="text-white font-serif text-xl mb-1">انتريستا</h3>
+                        </div>
                     </div>
                     
                     <div class="bg-black/40 rounded-xl p-5 mb-6 border border-white/5 relative z-10 shadow-inner">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-gray-400 font-sans">سعر النسخة:</span>
-                            <span class="text-2xl font-serif text-mystic-gold">2900 د.ج</span>
-                        </div>
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-gray-400 font-sans">التوصيل:</span>
-                            <span class="font-sans font-bold text-green-400 flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> متاح لـ 58 ولاية</span>
-                        </div>
+                        <p class="text-sm text-gray-300 font-sans mb-3 text-right flex items-center gap-2">
+                            <span class="text-mystic-gold">✓</span> متوفر بنسخة إلكترونية (PDF) فورية.
+                        </p>
+                        <p class="text-sm text-gray-300 font-sans text-right flex items-center gap-2">
+                            <span class="text-mystic-gold">✓</span> متوفر ككتاب ورقي يصلك لباب البيت.
+                        </p>
                     </div>
                 </div>
             </div>
 
             <!-- The Advanced Form Side -->
-            <div class="lg:col-span-7 reveal" style="transition-delay: 0.2s;">
+            <div class="lg:col-span-7 reveal" style="transition-delay: 0.1s;">
                 <div class="mb-8">
-                    <h2 class="font-serif text-4xl text-white mb-3">سجل طلبك الآن <span class="animate-bounce inline-block">👇</span></h2>
-                    <p class="font-sans text-gray-400">يرجى ملء الاستمارة بدقة ليتم شحن الرواية إليك في أقرب وقت.</p>
+                    <h2 class="font-serif text-4xl text-white mb-3">حدد نوع النسخة <span class="animate-bounce inline-block text-mystic-gold">👇</span></h2>
+                    <p class="font-sans text-gray-400">اختر الطريقة التي تفضلها للغوص في هذا العالم.</p>
                 </div>
 
                 <form id="bookOrderForm" class="space-y-6">
-                    <input type="hidden" name="product" id="input_product" value="كتاب انتريستا - 1 نسخة">
-                    <input type="hidden" name="total_price" id="input_total_price" value="2900">
+                    <input type="hidden" name="product" id="input_product" value="كتاب انتريستا - نسخة إلكترونية (PDF)">
+                    <input type="hidden" name="total_price" id="input_total_price" value="900">
                     
-                    <!-- Offer Selection (Upsell) -->
+                    <!-- Offer Selection -->
                     <div class="space-y-4 mb-8">
-                        <label class="flex items-center justify-between p-4 border-2 border-mystic-gold rounded-xl cursor-pointer bg-mystic-gold/10 transition-all shadow-[0_0_15px_rgba(212,175,55,0.2)] transform hover:scale-[1.01]" id="label-pack1">
+                        <!-- Option 1: PDF Ebook -->
+                        <label class="flex items-center justify-between p-4 border-2 border-mystic-gold rounded-xl cursor-pointer bg-mystic-gold/10 transition-all shadow-[0_0_15px_rgba(212,175,55,0.2)] transform hover:scale-[1.01]" id="label-digital">
                             <div class="flex items-center gap-4">
-                                <div class="relative w-6 h-6 flex items-center justify-center">
-                                    <input type="radio" name="pack" value="1" data-price="2900" checked class="opacity-0 absolute w-full h-full cursor-pointer peer">
+                                <div class="relative w-6 h-6 flex items-center justify-center shrink-0">
+                                    <input type="radio" name="format" value="digital" checked class="opacity-0 absolute w-full h-full cursor-pointer peer">
                                     <div class="w-6 h-6 border-2 border-mystic-gold rounded-full peer-checked:bg-mystic-gold transition-colors flex items-center justify-center">
                                         <div class="w-2.5 h-2.5 bg-[#080A1A] rounded-full scale-0 peer-checked:scale-100 transition-transform"></div>
                                     </div>
                                 </div>
                                 <div>
-                                    <span class="text-white font-sans font-bold text-lg block">نسخة واحدة (لنفسك) 📖</span>
+                                    <span class="text-white font-sans font-bold text-lg block">نسخة إلكترونية (PDF) 📱</span>
+                                    <span class="text-gray-400 text-xs font-sans">تصلك فوراً للإيميل (دفع مسبق)</span>
                                 </div>
                             </div>
-                            <span class="text-mystic-gold font-serif text-2xl font-bold">2900 د.ج</span>
+                            <span class="text-white font-serif text-2xl font-bold">900 د.ج</span>
                         </label>
                         
-                        <label class="flex items-center justify-between p-4 border-2 border-gray-700 rounded-xl cursor-pointer bg-black/40 transition-all hover:border-mystic-gold/50 relative overflow-hidden transform hover:scale-[1.01]" id="label-pack2">
-                            <div class="absolute top-0 right-0 bg-gradient-to-r from-mystic-gold to-yellow-600 text-[#080A1A] text-[11px] font-bold px-3 py-1 rounded-bl-xl shadow-lg">أفضل عرض هدايا</div>
-                            <div class="flex items-center gap-4 mt-3">
-                                <div class="relative w-6 h-6 flex items-center justify-center">
-                                    <input type="radio" name="pack" value="2" data-price="5500" class="opacity-0 absolute w-full h-full cursor-pointer peer">
-                                    <div class="w-6 h-6 border-2 border-gray-500 rounded-full peer-checked:bg-mystic-gold peer-checked:border-mystic-gold transition-colors flex items-center justify-center" id="radio-circle-2">
+                        <!-- Option 2: Physical Book -->
+                        <label class="flex items-center justify-between p-4 border-2 border-gray-700 rounded-xl cursor-pointer bg-black/40 transition-all hover:border-mystic-gold/50 relative overflow-hidden transform hover:scale-[1.01]" id="label-physical">
+                            <div class="flex items-center gap-4">
+                                <div class="relative w-6 h-6 flex items-center justify-center shrink-0">
+                                    <input type="radio" name="format" value="physical" class="opacity-0 absolute w-full h-full cursor-pointer peer">
+                                    <div class="w-6 h-6 border-2 border-gray-600 rounded-full peer-checked:bg-mystic-gold peer-checked:border-mystic-gold transition-colors flex items-center justify-center" id="radio-circle-phys">
                                         <div class="w-2.5 h-2.5 bg-[#080A1A] rounded-full scale-0 peer-checked:scale-100 transition-transform"></div>
                                     </div>
                                 </div>
                                 <div>
-                                    <span class="text-white font-sans font-bold text-lg block">نسختين (لك ولصديقتك) 👯‍♀️</span>
-                                    <span class="text-green-400 text-xs font-bold inline-block mt-1 bg-green-400/10 px-2 py-0.5 rounded">تخفيض + توصيل مجاني!</span>
+                                    <span class="text-white font-sans font-bold text-lg block">كتاب ورقي (مطبوع) 📖</span>
+                                    <span class="text-gray-400 text-xs font-sans">الدفع عند الاستلام</span>
                                 </div>
                             </div>
-                            <div class="text-left mt-3">
-                                <span class="text-gray-500 line-through text-sm font-sans block mb-1">5800 د.ج</span>
-                                <span class="text-white font-serif text-2xl font-bold block">5500 د.ج</span>
+                            <div class="text-left">
+                                <span class="text-white font-serif text-2xl font-bold block">1900 د.ج</span>
+                                <span class="text-gray-500 text-[10px] block">+ مصاريف التوصيل</span>
                             </div>
                         </label>
                     </div>
 
-                    <!-- Advanced Floating Label Inputs -->
+                    <!-- Shared Inputs (Always visible) -->
                     <div class="space-y-5">
                         <div class="checkout-input-container">
                             <input type="text" name="name" id="name" required placeholder=" " class="checkout-input">
@@ -347,17 +363,45 @@
                             <label for="phone" class="checkout-label">رقم الهاتف (05/06/07) *</label>
                         </div>
                         
-                        <div class="grid grid-cols-2 gap-5">
+                        <!-- Wilaya & Commune (Hidden for PDF by default via JS, but starts hidden if we wanted) -->
+                        <div class="grid grid-cols-2 gap-5 physical-fields hidden opacity-0 transition-all duration-500">
                             <div class="checkout-input-container">
-                                <select name="wilaya" id="wilaya-select" required class="checkout-input appearance-none cursor-pointer">
+                                <select name="wilaya" id="wilaya-select" class="checkout-input appearance-none cursor-pointer">
                                     <option value="" disabled selected></option>
-                                    <option value="01 - أدرار" data-liv="900">01 - أدرار</option><option value="02 - الشلف" data-liv="600">02 - الشلف</option><option value="03 - الأغواط" data-liv="900">03 - الأغواط</option><option value="04 - أم البواقي" data-liv="600">04 - أم البواقي</option><option value="05 - باتنة" data-liv="600">05 - باتنة</option><option value="06 - بجاية" data-liv="600">06 - بجاية</option><option value="07 - بسكرة" data-liv="900">07 - بسكرة</option><option value="08 - بشار" data-liv="900">08 - بشار</option><option value="09 - البليدة" data-liv="500">09 - البليدة</option><option value="10 - البويرة" data-liv="600">10 - البويرة</option><option value="11 - تمنراست" data-liv="900">11 - تمنراست</option><option value="12 - تبسة" data-liv="600">12 - تبسة</option><option value="13 - تلمسان" data-liv="600">13 - تلمسان</option><option value="14 - تيارت" data-liv="600">14 - تيارت</option><option value="15 - تيزي وزو" data-liv="600">15 - تيزي وزو</option><option value="16 - الجزائر" data-liv="400">16 - الجزائر</option><option value="17 - الجلفة" data-liv="900">17 - الجلفة</option><option value="18 - جيجل" data-liv="600">18 - جيجل</option><option value="19 - سطيف" data-liv="600">19 - سطيف</option><option value="20 - سعيدة" data-liv="600">20 - سعيدة</option><option value="21 - سكيكدة" data-liv="600">21 - سكيكدة</option><option value="22 - سيدي بلعباس" data-liv="600">22 - سيدي بلعباس</option><option value="23 - عنابة" data-liv="600">23 - عنابة</option><option value="24 - قالمة" data-liv="600">24 - قالمة</option><option value="25 - قسنطينة" data-liv="600">25 - قسنطينة</option><option value="26 - المدية" data-liv="600">26 - المدية</option><option value="27 - مستغانم" data-liv="600">27 - مستغانم</option><option value="28 - المسيلة" data-liv="600">28 - المسيلة</option><option value="29 - معسكر" data-liv="600">29 - معسكر</option><option value="30 - ورقلة" data-liv="900">30 - ورقلة</option><option value="31 - وهران" data-liv="600">31 - وهران</option><option value="32 - البيض" data-liv="900">32 - البيض</option><option value="33 - إليزي" data-liv="900">33 - إليزي</option><option value="34 - برج بوعريريج" data-liv="600">34 - برج بوعريريج</option><option value="35 - بومرداس" data-liv="500">35 - بومرداس</option><option value="36 - الطارف" data-liv="600">36 - الطارف</option><option value="37 - تندوف" data-liv="900">37 - تندوف</option><option value="38 - تسمسيلت" data-liv="600">38 - تسمسيلت</option><option value="39 - الوادي" data-liv="900">39 - الوادي</option><option value="40 - خنشلة" data-liv="600">40 - خنشلة</option><option value="41 - سوق أهراس" data-liv="600">41 - سوق أهراس</option><option value="42 - تيبازة" data-liv="500">42 - تيبازة</option><option value="43 - ميلة" data-liv="600">43 - ميلة</option><option value="44 - عين الدفلى" data-liv="600">44 - عين الدفلى</option><option value="45 - النعامة" data-liv="900">45 - النعامة</option><option value="46 - عين تموشنت" data-liv="600">46 - عين تموشنت</option><option value="47 - غرداية" data-liv="900">47 - غرداية</option><option value="48 - غليزان" data-liv="600">48 - غليزان</option><option value="49 - تيميمون" data-liv="900">49 - تيميمون</option><option value="50 - برج باجي مختار" data-liv="900">50 - برج باجي مختار</option><option value="51 - أولاد جلال" data-liv="900">51 - أولاد جلال</option><option value="52 - بني عباس" data-liv="900">52 - بني عباس</option><option value="53 - إن صالح" data-liv="900">53 - إن صالح</option><option value="54 - إن قزام" data-liv="900">54 - إن قزام</option><option value="55 - تقرت" data-liv="900">55 - تقرت</option><option value="56 - جانت" data-liv="900">56 - جانت</option><option value="57 - المغير" data-liv="900">57 - المغير</option><option value="58 - المنيعة" data-liv="900">58 - المنيعة</option>
+                                    <option value="01 - أدرار" data-liv="900">01 - أدرار</option><option value="02 - الشلف" data-liv="600">02 - الشلف</option><option value="03 - الأغواط" data-liv="800">03 - الأغواط</option><option value="04 - أم البواقي" data-liv="600">04 - أم البواقي</option><option value="05 - باتنة" data-liv="600">05 - باتنة</option><option value="06 - بجاية" data-liv="600">06 - بجاية</option><option value="07 - بسكرة" data-liv="800">07 - بسكرة</option><option value="08 - بشار" data-liv="900">08 - بشار</option><option value="09 - البليدة" data-liv="500">09 - البليدة</option><option value="10 - البويرة" data-liv="600">10 - البويرة</option><option value="11 - تمنراست" data-liv="1200">11 - تمنراست</option><option value="12 - تبسة" data-liv="600">12 - تبسة</option><option value="13 - تلمسان" data-liv="600">13 - تلمسان</option><option value="14 - تيارت" data-liv="600">14 - تيارت</option><option value="15 - تيزي وزو" data-liv="600">15 - تيزي وزو</option><option value="16 - الجزائر" data-liv="400">16 - الجزائر</option><option value="17 - الجلفة" data-liv="800">17 - الجلفة</option><option value="18 - جيجل" data-liv="600">18 - جيجل</option><option value="19 - سطيف" data-liv="600">19 - سطيف</option><option value="20 - سعيدة" data-liv="600">20 - سعيدة</option><option value="21 - سكيكدة" data-liv="600">21 - سكيكدة</option><option value="22 - سيدي بلعباس" data-liv="600">22 - سيدي بلعباس</option><option value="23 - عنابة" data-liv="600">23 - عنابة</option><option value="24 - قالمة" data-liv="600">24 - قالمة</option><option value="25 - قسنطينة" data-liv="600">25 - قسنطينة</option><option value="26 - المدية" data-liv="600">26 - المدية</option><option value="27 - مستغانم" data-liv="600">27 - مستغانم</option><option value="28 - المسيلة" data-liv="600">28 - المسيلة</option><option value="29 - معسكر" data-liv="600">29 - معسكر</option><option value="30 - ورقلة" data-liv="900">30 - ورقلة</option><option value="31 - وهران" data-liv="600">31 - وهران</option><option value="32 - البيض" data-liv="800">32 - البيض</option><option value="33 - إليزي" data-liv="1200">33 - إليزي</option><option value="34 - برج بوعريريج" data-liv="600">34 - برج بوعريريج</option><option value="35 - بومرداس" data-liv="500">35 - بومرداس</option><option value="36 - الطارف" data-liv="600">36 - الطارف</option><option value="37 - تندوف" data-liv="1200">37 - تندوف</option><option value="38 - تسمسيلت" data-liv="600">38 - تسمسيلت</option><option value="39 - الوادي" data-liv="900">39 - الوادي</option><option value="40 - خنشلة" data-liv="600">40 - خنشلة</option><option value="41 - سوق أهراس" data-liv="600">41 - سوق أهراس</option><option value="42 - تيبازة" data-liv="500">42 - تيبازة</option><option value="43 - ميلة" data-liv="600">43 - ميلة</option><option value="44 - عين الدفلى" data-liv="600">44 - عين الدفلى</option><option value="45 - النعامة" data-liv="800">45 - النعامة</option><option value="46 - عين تموشنت" data-liv="600">46 - عين تموشنت</option><option value="47 - غرداية" data-liv="900">47 - غرداية</option><option value="48 - غليزان" data-liv="600">48 - غليزان</option><option value="49 - تيميمون" data-liv="900">49 - تيميمون</option><option value="50 - برج باجي مختار" data-liv="1200">50 - برج باجي مختار</option><option value="51 - أولاد جلال" data-liv="800">51 - أولاد جلال</option><option value="52 - بني عباس" data-liv="900">52 - بني عباس</option><option value="53 - إن صالح" data-liv="1200">53 - إن صالح</option><option value="54 - إن قزام" data-liv="1200">54 - إن قزام</option><option value="55 - تقرت" data-liv="900">55 - تقرت</option><option value="56 - جانت" data-liv="1200">56 - جانت</option><option value="57 - المغير" data-liv="800">57 - المغير</option><option value="58 - المنيعة" data-liv="900">58 - المنيعة</option>
                                 </select>
                                 <label class="checkout-label bg-[#080A1A]">الولاية *</label>
                             </div>
                             <div class="checkout-input-container">
-                                <input type="text" name="commune" id="commune" required placeholder=" " class="checkout-input">
+                                <input type="text" name="commune" id="commune" placeholder=" " class="checkout-input">
                                 <label for="commune" class="checkout-label">البلدية *</label>
+                            </div>
+                        </div>
+
+                        <!-- Digital specific field (Email) -->
+                        <div class="checkout-input-container digital-fields transition-all duration-500">
+                            <input type="email" name="email" id="email" required placeholder=" " dir="ltr" class="checkout-input text-right">
+                            <label for="email" class="checkout-label">البريد الإلكتروني (لاستلام الـ PDF) *</label>
+                        </div>
+                    </div>
+
+                    <!-- Payment Info (For PDF ONLY) -->
+                    <div class="payment-info mt-6 p-5 border border-mystic-gold/40 bg-mystic-gold/5 rounded-xl transition-all duration-500">
+                        <h4 class="text-white font-sans font-bold mb-2 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-mystic-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            طرق الدفع للحصول على النسخة الإلكترونية
+                        </h4>
+                        <p class="text-xs text-gray-400 font-sans mb-4 leading-relaxed">
+                            يرجى ملء الاستمارة والضغط على "تأكيد". سيتم التواصل معك عبر الواتساب أو اتصال هاتفي لتزويدك بأحد الحسابات التالية الدفع وإرسال الكتاب فوراً.
+                        </p>
+                        <div class="space-y-2 font-sans text-sm">
+                            <div class="bg-black/50 p-3 rounded border border-white/5 flex justify-between items-center">
+                                <span class="text-gray-400">بريدي موب (RIP):</span>
+                                <span class="text-white font-mono tracking-widest text-xs">سيتم تحديده</span>
+                            </div>
+                            <div class="bg-black/50 p-3 rounded border border-white/5 flex justify-between items-center">
+                                <span class="text-gray-400">حساب CCP:</span>
+                                <span class="text-white font-mono tracking-widest text-xs">سيتم تحديده</span>
                             </div>
                         </div>
                     </div>
@@ -366,25 +410,29 @@
                     <div class="bg-gradient-to-br from-black/80 to-[#1E1433]/80 border border-mystic-gold/30 rounded-xl p-5 mt-8 shadow-lg relative overflow-hidden">
                         <div class="absolute -right-10 -top-10 w-24 h-24 bg-mystic-gold/10 rounded-full blur-xl"></div>
                         
-                        <div class="flex justify-between text-gray-300 mb-3 font-sans items-center">
-                            <span>المنتج:</span>
-                            <span id="sum-price" class="text-white font-bold">2900 د.ج</span>
+                        <div class="flex justify-between text-gray-300 mb-3 font-sans items-center text-sm">
+                            <span>النسخة:</span>
+                            <span id="sum-type" class="text-white font-bold">إلكترونية (PDF)</span>
                         </div>
-                        <div class="flex justify-between text-gray-300 mb-4 font-sans items-center">
+                        <div class="flex justify-between text-gray-300 mb-3 font-sans items-center text-sm">
+                            <span>سعر الكتاب:</span>
+                            <span id="sum-price" class="text-white font-bold">900 د.ج</span>
+                        </div>
+                        <div class="flex justify-between text-gray-300 mb-4 font-sans items-center text-sm physical-delivery-sum hidden">
                             <span>التوصيل:</span>
-                            <span id="sum-delivery" class="text-mystic-gold font-bold bg-mystic-gold/10 px-3 py-1 rounded-full text-sm">يحدد حسب الولاية</span>
+                            <span id="sum-delivery" class="text-mystic-gold font-bold bg-mystic-gold/10 px-3 py-1 rounded-full text-xs">يحدد حسب الولاية</span>
                         </div>
                         <div class="flex justify-between items-center border-t border-white/20 pt-4 mt-2">
                             <span class="text-white font-sans font-bold text-lg">المجموع الكلي:</span>
-                            <span id="sum-total" class="text-3xl font-serif text-mystic-gold drop-shadow-md">2900 د.ج</span>
+                            <span id="sum-total" class="text-3xl font-serif text-mystic-gold drop-shadow-md">900 د.ج</span>
                         </div>
                     </div>
 
                     <button type="submit" id="submitBtn" class="btn-magic w-full py-5 rounded-xl font-sans font-bold text-2xl flex justify-center items-center gap-3 mt-6 relative overflow-hidden group">
-                        <span class="relative z-10">تأكيد الطلب 🚚</span>
+                        <span class="relative z-10">تأكيد وحجز النسخة 🔒</span>
                         <div class="absolute inset-0 bg-white/20 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out z-0"></div>
                     </button>
-                    <p class="text-center font-sans text-xs text-gray-500 mt-3">الدفع يكون يداً بيد عند استلامك للكتاب</p>
+                    <p id="payment-note" class="text-center font-sans text-xs text-gray-500 mt-3">يتم تأكيد الدفع عبر التواصل المباشر معك</p>
                 </form>
 
                 <!-- SUCCESS MESSAGE -->
@@ -393,7 +441,10 @@
                         <svg class="w-12 h-12 text-mystic-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                     </div>
                     <h3 class="font-serif text-4xl text-white mb-4">تم تسجيل طلبك بنجاح! 🎉</h3>
-                    <p class="font-sans text-gray-300 mb-8 leading-relaxed text-lg max-w-md mx-auto">شكراً لاختيارك رواية انتريستا. استعد لرحلة لا تُنسى في عالم السحر والحروب.<br><span class="text-mystic-gold font-bold mt-2 block">سنتصل بك قريباً لتأكيد العنوان، يرجى إبقاء هاتفك مفتوحاً.</span></p>
+                    <p class="font-sans text-gray-300 mb-8 leading-relaxed text-lg max-w-md mx-auto">
+                        شكراً لاختيارك رواية انتريستا. استعد لرحلة لا تُنسى في عالم السحر والحروب.<br>
+                        <span class="text-mystic-gold font-bold mt-2 block">سنتصل بك قريباً لتأكيد طلبك، يرجى إبقاء هاتفك مفتوحاً.</span>
+                    </p>
                     
                     <div class="bg-black/50 border border-mystic-gold/30 rounded-xl p-6 inline-block">
                         <p class="text-sm text-gray-400 font-sans uppercase tracking-widest mb-2">رقم الحجز الخاص بك</p>
@@ -415,7 +466,7 @@
     <div id="sticky-cta" class="fixed bottom-0 w-full bg-mystic-dark/95 backdrop-blur-md border-t border-mystic-gold/30 p-3 flex justify-between items-center z-40 transform translate-y-full transition-transform duration-500">
         <div class="text-right px-4 hidden sm:block">
             <p class="text-xs text-gray-400 font-sans">انتريستا: لعنة الحروب</p>
-            <p class="font-serif text-mystic-gold text-xl" id="sticky-price">2900 د.ج</p>
+            <p class="font-serif text-mystic-gold text-xl" id="sticky-price">900 د.ج</p>
         </div>
         <a href="#order" class="btn-magic px-8 py-3 rounded-lg font-sans font-bold text-sm w-full sm:w-auto text-center">
             أطلب النسخة الآن
@@ -428,9 +479,9 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             
-            // --- Magic Dust Particle Generator ---
+            // --- Light Particle Generator ---
             const starsContainer = document.getElementById('stars');
-            for(let i=0; i<50; i++) {
+            for(let i=0; i<20; i++) { // Reduced to 20 for performance
                 let star = document.createElement('div');
                 star.className = 'star';
                 let size = Math.random() * 3;
@@ -450,34 +501,24 @@
             }, { threshold: 0.1 });
             reveals.forEach(reveal => observer.observe(reveal));
 
-            // --- Sales Notifications (Toast) ---
-            const toast = document.getElementById('sales-toast');
-            const toastName = document.getElementById('toast-name');
-            const toastCity = document.getElementById('toast-city');
-            const toastQty = document.getElementById('toast-qty');
+            // --- Dynamic Form Logic (Ebook vs Physical) ---
+            const radios = document.querySelectorAll('input[name="format"]');
             
-            const names = ["مريم", "سارة", "لينا", "ياسين", "أمينة", "ريان", "أنفال"];
-            const cities = ["الجزائر العاصمة", "وهران", "سطيف", "عنابة", "باتنة", "تلمسان", "قسنطينة"];
-            const qtys = ["نسخة واحدة", "نسختين كهدية", "نسخة واحدة"];
-
-            function showToast() {
-                toastName.textContent = names[Math.floor(Math.random() * names.length)];
-                toastCity.textContent = cities[Math.floor(Math.random() * cities.length)];
-                toastQty.textContent = qtys[Math.floor(Math.random() * qtys.length)];
-                
-                toast.classList.add('show');
-                setTimeout(() => { toast.classList.remove('show'); }, 4000);
-            }
-            // Trigger first toast after 5s, then every 20s
-            setTimeout(() => { showToast(); setInterval(showToast, 20000); }, 5000);
-
-            // --- Dynamic Pricing Logic ---
-            const radios = document.querySelectorAll('input[name="pack"]');
+            const digitalFields = document.querySelector('.digital-fields');
+            const physicalFields = document.querySelector('.physical-fields');
+            const paymentInfo = document.querySelector('.payment-info');
+            const physicalDeliverySum = document.querySelector('.physical-delivery-sum');
+            const paymentNote = document.getElementById('payment-note');
+            
+            const emailInput = document.getElementById('email');
             const wilayaSelect = document.getElementById('wilaya-select');
-            const labelPack1 = document.getElementById('label-pack1');
-            const labelPack2 = document.getElementById('label-pack2');
-            const radioCircle2 = document.getElementById('radio-circle-2');
+            const communeInput = document.getElementById('commune');
             
+            const labelDigital = document.getElementById('label-digital');
+            const labelPhysical = document.getElementById('label-physical');
+            const radioCirclePhys = document.getElementById('radio-circle-phys');
+            
+            const sumType = document.getElementById('sum-type');
             const sumPrice = document.getElementById('sum-price');
             const sumDelivery = document.getElementById('sum-delivery');
             const sumTotal = document.getElementById('sum-total');
@@ -485,12 +526,51 @@
             const inputTotalPrice = document.getElementById('input_total_price');
             const stickyPrice = document.getElementById('sticky-price');
 
-            function updatePrice() {
-                const selectedPack = document.querySelector('input[name="pack"]:checked');
-                const basePrice = parseInt(selectedPack.dataset.price);
-                const isFreeDelivery = selectedPack.value === '2'; // Pack 2 has free delivery
+            function updatePricingAndFields() {
+                const isDigital = document.querySelector('input[name="format"]:checked').value === 'digital';
+                
+                if (isDigital) {
+                    labelDigital.classList.add('border-mystic-gold', 'bg-mystic-gold/10', 'shadow-[0_0_15px_rgba(212,175,55,0.2)]');
+                    labelDigital.classList.remove('border-gray-800', 'bg-black/40');
+                    labelPhysical.classList.remove('border-mystic-gold', 'bg-mystic-gold/10', 'shadow-[0_0_15px_rgba(212,175,55,0.2)]');
+                    labelPhysical.classList.add('border-gray-800', 'bg-black/40');
+                    radioCirclePhys.classList.add('border-gray-600');
+                    radioCirclePhys.classList.remove('border-mystic-gold');
+                    
+                    digitalFields.classList.remove('hidden');
+                    paymentInfo.classList.remove('hidden');
+                    setTimeout(() => { digitalFields.classList.remove('opacity-0'); paymentInfo.classList.remove('opacity-0'); }, 50);
+                    
+                    physicalFields.classList.add('opacity-0');
+                    setTimeout(() => { physicalFields.classList.add('hidden'); }, 300);
 
+                    emailInput.setAttribute('required', 'required');
+                    wilayaSelect.removeAttribute('required');
+                    communeInput.removeAttribute('required');
+                } else {
+                    labelPhysical.classList.add('border-mystic-gold', 'bg-mystic-gold/10', 'shadow-[0_0_15px_rgba(212,175,55,0.2)]');
+                    labelPhysical.classList.remove('border-gray-800', 'bg-black/40');
+                    radioCirclePhys.classList.remove('border-gray-600');
+                    radioCirclePhys.classList.add('border-mystic-gold');
+                    labelDigital.classList.remove('border-mystic-gold', 'bg-mystic-gold/10', 'shadow-[0_0_15px_rgba(212,175,55,0.2)]');
+                    labelDigital.classList.add('border-gray-800', 'bg-black/40');
+
+                    physicalFields.classList.remove('hidden');
+                    physicalDeliverySum.classList.remove('hidden');
+                    setTimeout(() => { physicalFields.classList.remove('opacity-0'); }, 50);
+
+                    digitalFields.classList.add('opacity-0');
+                    paymentInfo.classList.add('opacity-0');
+                    setTimeout(() => { digitalFields.classList.add('hidden'); paymentInfo.classList.add('hidden'); }, 300);
+
+                    emailInput.removeAttribute('required');
+                    wilayaSelect.setAttribute('required', 'required');
+                    communeInput.setAttribute('required', 'required');
+                }
+
+                const basePrice = isDigital ? 900 : 1900;
                 let deliveryFee = 0;
+                
                 if (wilayaSelect.value !== "") {
                     deliveryFee = parseInt(wilayaSelect.options[wilayaSelect.selectedIndex].dataset.liv) || 600;
                     wilayaSelect.nextElementSibling.style.top = "0";
@@ -498,41 +578,20 @@
                     wilayaSelect.nextElementSibling.style.color = "#D4AF37";
                 }
 
-                let finalDelivery = isFreeDelivery ? 0 : deliveryFee;
+                let finalDelivery = isDigital ? 0 : deliveryFee;
                 let totalPrice = basePrice + finalDelivery;
 
-                // Update UI visually for Packs
-                if(selectedPack.value === '1') {
-                    labelPack1.classList.add('border-mystic-gold', 'bg-mystic-gold/10', 'shadow-[0_0_15px_rgba(212,175,55,0.2)]');
-                    labelPack1.classList.remove('border-gray-700', 'bg-black/40', 'border-transparent');
-                    
-                    labelPack2.classList.remove('border-mystic-gold', 'bg-mystic-gold/10', 'shadow-[0_0_15px_rgba(212,175,55,0.2)]');
-                    labelPack2.classList.add('border-gray-700', 'bg-black/40');
-                    radioCircle2.classList.add('border-gray-500');
-                    radioCircle2.classList.remove('border-mystic-gold');
-                    
-                    inputProduct.value = "كتاب انتريستا - 1 نسخة";
-                } else {
-                    labelPack2.classList.add('border-mystic-gold', 'bg-mystic-gold/10', 'shadow-[0_0_15px_rgba(212,175,55,0.2)]');
-                    labelPack2.classList.remove('border-gray-700', 'bg-black/40');
-                    radioCircle2.classList.remove('border-gray-500');
-                    radioCircle2.classList.add('border-mystic-gold');
-
-                    labelPack1.classList.remove('border-mystic-gold', 'bg-mystic-gold/10', 'shadow-[0_0_15px_rgba(212,175,55,0.2)]');
-                    labelPack1.classList.add('border-gray-700', 'bg-black/40', 'border-transparent');
-                    
-                    inputProduct.value = "كتاب انتريستا - 2 نسخ (عرض خاص)";
-                }
-
-                // Update Summary
-                sumPrice.textContent = basePrice + ' د.ج';
+                sumType.textContent = isDigital ? "إلكترونية (PDF)" : "ورقي (مطبوع)";
+                sumPrice.textContent = basePrice + " د.ج";
+                inputProduct.value = isDigital ? "رواية انتريستا - نسخة إلكترونية (PDF)" : "رواية انتريستا - كتاب ورقي";
                 
-                if (wilayaSelect.value === "") {
-                    sumDelivery.innerHTML = isFreeDelivery ? '<span class="text-green-400">مجاني 🎁</span>' : 'يحدد حسب الولاية';
-                    sumDelivery.className = isFreeDelivery ? 'font-bold bg-green-400/10 px-3 py-1 rounded-full text-sm animate-pulse' : 'text-mystic-gold font-bold bg-mystic-gold/10 px-3 py-1 rounded-full text-sm';
+                if (isDigital) {
+                    physicalDeliverySum.classList.add('hidden');
+                    paymentNote.textContent = "يتم تأكيد الدفع عبر التواصل المباشر معك";
                 } else {
-                    sumDelivery.innerHTML = isFreeDelivery ? '<span class="text-green-400">مجاني 🎁</span>' : finalDelivery + ' د.ج';
-                    sumDelivery.className = isFreeDelivery ? 'font-bold bg-green-400/10 px-3 py-1 rounded-full text-sm animate-pulse' : 'text-mystic-gold font-bold bg-mystic-gold/10 px-3 py-1 rounded-full text-sm';
+                    physicalDeliverySum.classList.remove('hidden');
+                    sumDelivery.textContent = (wilayaSelect.value === "") ? 'يحدد حسب الولاية' : finalDelivery + ' د.ج';
+                    paymentNote.textContent = "الدفع نقداً عند استلامك للكتاب لباب بيتك";
                 }
 
                 sumTotal.textContent = totalPrice + ' د.ج';
@@ -540,8 +599,10 @@
                 stickyPrice.textContent = totalPrice + ' د.ج';
             }
 
-            radios.forEach(r => r.addEventListener('change', updatePrice));
-            wilayaSelect.addEventListener('change', updatePrice);
+            radios.forEach(r => r.addEventListener('change', updatePricingAndFields));
+            wilayaSelect.addEventListener('change', updatePricingAndFields);
+
+            updatePricingAndFields();
 
             // --- Sticky CTA Logic ---
             const stickyCta = document.getElementById('sticky-cta');
@@ -567,17 +628,13 @@
                 submitBtn.style.opacity = '0.8';
 
                 let formData = new FormData(form);
-                
-                // Force Append Values
                 formData.set('total_price', inputTotalPrice.value);
                 formData.set('product', inputProduct.value);
                 
-                // Send in background
                 fetch(scriptURL, { method: 'POST', body: formData})
                     .then(() => console.log('Order logged.'))
                     .catch(error => console.error('Error:', error));
 
-                // Instant UI Update
                 setTimeout(() => {
                     const randomID = Math.floor(1000 + Math.random() * 9000);
                     document.getElementById('order-id').textContent = `#BOOK-${randomID}`;
@@ -588,7 +645,6 @@
                     
                     window.scrollTo({ top: orderSection.offsetTop - 50, behavior: 'smooth' });
                     
-                    // Tracking Events
                     if(typeof fbq !== 'undefined') { fbq('track', 'Purchase', { value: formData.get('total_price'), currency: 'DZD' }); }
                     if(typeof ttq !== 'undefined') { ttq.track('CompletePayment', { value: formData.get('total_price'), currency: 'DZD' }); }
                     
